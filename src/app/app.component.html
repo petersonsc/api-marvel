@@ -1,0 +1,376 @@
+<div class="ads">
+    <div>
+        <div>
+        </div>
+    </div>
+</div>
+<header>
+    <nav class="mvl-nav-top mvl-nav mvl-nav-clear-float">
+        <div class="mvl-nav-top-c1">
+            <a href="" class="icon-mvl-logo-svg" title="home"></a>
+        </div>
+        <div class="mvl-nav-top-c2">
+            <div class="nav-top-row">
+                <ul class="text-right">
+                    <li>
+                        <a>
+                            WELCOME
+                        </a>
+                    </li>
+                    <li>
+                        <i class="icon icon-dots"></i>
+                    </li>
+                    <li>
+                        <a>
+                            MY ACCOUNT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-top-row">
+                <ul class="float-left">
+                    <li>
+                        <i class="icon icon-facebook"></i>
+                    </li>
+                    <li>
+                        <i class="icon icon-youtube"></i>
+                    </li>
+                    <li>
+                        <i class="icon icon-twitter"></i>
+                    </li>
+                </ul>
+                <ul class="float-right">
+                    <li>
+                        <input type="text" placeholder="SEARCH MARVEL SHOP" id="fname" name="fname"/>
+
+                        <i class="search icon icon-magnifier"></i>
+                    </li>
+                    <li class="nav-menu-button">
+                        <i class="icon icon-dots"></i>
+                    </li>
+                    <li>
+                        <i class="icon icon-cart"></i>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="nav-top-menu">
+        <div class="menu open">
+            <ul>
+                <li class="menu-item">
+                    <a class="shop"><strong>SHOP</strong></a>
+                </li>
+                <li>
+                    <i class="icon icon-dots"></i>
+                </li>
+                <li class="menu-item">
+                    <a class="news">New!</a>
+                </li>
+                <li class="menu-item">
+                    <a class="comics">Comics</a>
+                </li>
+                <li class="menu-item">
+                    <a class="characters">Characters</a>
+                </li>
+                <li class="menu-item">
+                    <a class="movies">Clothes</a>
+                </li>
+                <li class="menu-item">
+                    <a class="videos">Acessories</a>
+                </li>
+                <li class="menu-item">
+                    <a class="games">Toys</a>
+                </li>
+                <li class="menu-item">
+                    <a class="tv">Home Décor</a>
+                </li>
+                <li class="menu-item">
+                    <a class="topnavSearch">Entertaiment</a>
+                </li>
+                <li class="menu-item">
+                    <a class="tv">Collectibles</a>
+                </li>
+                <li class="menu-item">
+                    <a class="topnavSearch">Sales</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="slideshow-container">
+
+        <div class="slides fade">
+            <img src="../assets/img/HuntForWolverine.jpg" class="slides-img">
+        </div>
+
+        <div class="slides fade">
+            <img src="../assets/img/Seinen.jpg" class="slides-img">
+        </div>
+
+        <div class="slides fade">
+            <img src="../assets/img/1333544339.jpg" class="slides-img">
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    </div>
+
+    <div class="slideshow-nav">
+        <span class="dot" onclick="currentSlide(1)">1</span>
+        <span class="dot" onclick="currentSlide(2)">2</span>
+        <span class="dot" onclick="currentSlide(3)">3</span>
+    </div>
+
+    <div class="header-title">
+        <h1>THE HUNT FOR WOLVERINE KICKS OFF THIS APRIL</h1>
+        <p>CHARLES SOULE AND DAVID MARQUEZ UNRAVEL THE MYSTERY</p>
+        <div class="text-center">
+            <hr/>
+            <button class="btn btn-action"><span>READ UP</span></button>
+        </div>
+    </div>
+</header>
+<section>
+    <article>
+        <div class="browse-menu">
+            <div class="">
+                <ul>
+                    <li class="browse-menu-item">
+                        <p><strong>BROWSE BY</strong></p>
+                    </li>
+                    <li (click)="clickedInside('series')" class="btn-drop {{active1}} browse-menu-item">
+                        <p><a>SERIES</a><i class="icon icon-down-arrow"></i></p>
+                    </li>
+                    <li (click)="clickedInside('characters')" class="btn-drop {{active2}} browse-menu-item">
+                        <p><a>CHARACTERS</a><i class="icon icon-down-arrow"></i></p>
+                    </li>
+                    <li (click)="clickedInside('creators')" class="btn-drop {{active3}} browse-menu-item">
+                        <p><a>CREATORS</a><i class="icon icon-down-arrow"></i></p>
+                    </li>
+                </ul>
+            </div>
+
+            <div ID="items" [ngClass]="show ? 'show' : ''" class="text-center dropdown-content">
+                <div>
+                    <ul>
+                        <li class="text-left" *ngFor="let item of browseBy; index as i">
+                            <label class="container">{{item.name}}
+                                <input type="checkbox" (change)="change($event, item)" value="item.id" name="item.name"
+                                       id="item.name">
+                                <span class="checkmark"></span>
+                            </label>
+                        </li>
+                    </ul>
+                    <button class="btn btn-action" (click)="getAllHeroes('newFilter', origin, selectedValue)">
+                        <span>OK</span></button>
+                </div>
+            </div>
+        </div>
+
+    </article>
+    <article>
+        <div *ngIf="filteredValue.length > 0">
+            <ul>
+                <li class="filtered" (click)="deleteFitleredItem(item)" *ngFor="let item of filteredValue; index as i">
+                    {{item.name}} &times;
+                </li>
+            </ul>
+        </div>
+
+        <div class="results">
+            <div class="grid-container result-item" *ngFor="let item of heroes; index as i">
+                <div class="grid-item">
+                    <img [ngClass]="item.class" (mouseover)="bigImg(i)" (mouseleave)="normalImg(i)"
+                         src="{{item.image}}">
+                    <p><strong>{{item.title}}</strong></p>
+                    <p>{{item.creator}}</p>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showLoadButtom" class="text-center">
+            <hr/>
+            <button class="btn btn-action" (click)="getAllHeroes('loadMore', filter, selectedValue)"><span>LOAD MORE</span>
+            </button>
+        </div>
+    </article>
+</section>
+<footer>
+    <div class="ads footer">
+        <div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-bottom-menu">
+        <div class="menu open">
+            <div class="menu menu-footer">
+                <ul class="menu-footer">
+                    <li class="menu-item">
+                        <p class="menu-footer">COMICS</p>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Release Calendar</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Marvel Unlimited</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Redeem Digital Copy</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Shop Digital Comics</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Print Subscriptions</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Developer Portal</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu menu-footer">
+                <ul class="menu-footer">
+                    <li class="menu-item">
+                        <p class="menu-footer">CHARACTERS</p>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Spider-Man</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Avengers</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Iron Man</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Doctor Strange</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Captain America</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu menu-footer">
+                <ul class="menu-footer">
+                    <li class="menu-item">
+                        <p class="menu-footer">KIDS</p>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Marvel HQ</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Kids Games</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Kids Videos</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Kids Activities</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu menu-footer">
+                <ul class="menu-footer">
+                    <li class="menu-item">
+                        <p class="menu-footer">MARVEL</p>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Sign Up</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Marvel Mastercard&#174;</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Marvel Insider</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Help / FAQs</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Email Preferences</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">About Marvel</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Advetising</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Internships</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Careers</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu menu-footer">
+                <ul class="menu-footer">
+                    <li class="menu-item">
+                        <p class="menu-footer">INSIDER</p>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Join Today</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Home</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Activities</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Rewards</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Member Profile</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">FAQs</a>
+                    </li>
+                    <li>
+                        <a class="menu-footer">Marvel Insider Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+            <hr class="footer">
+            <div class="menu">
+                <ul>
+                    <li class="menu-item footer">
+                        <a class="icon-mvl-logo-svg footer" title="home"></a>
+                    </li>
+                    <li class="menu-item footer">
+                        <a class="footer">Terms of Use</a>
+                    </li>
+                    <li class="menu-item footer">
+                        <a class="footer">Privacy Policy</a>
+                    </li>
+                    <li class="menu-item footer">
+                        <a class="footer">Your California Privacy Policy</a>
+                    </li>
+                    <li class="menu-item footer">
+                        <a class="footer">License Agreement</a>
+                    </li>
+                    <li class="menu-item footer">
+                        <a class="footer">Interest-Based Ads</a>
+                    </li>
+                    <li class="menu-item footer">
+                        <a class="footer">&#169; 2018 Marvel</a>
+                    </li>
+                    <li class="menu-item footer">
+                        <i class="icon icon-facebook"></i>
+                    </li>
+                    <li class="menu-item footer">
+                        <i class="icon icon-youtube"></i>
+                    </li>
+                    <li class="menu-item footer">
+                        <i class="icon icon-twitter"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
